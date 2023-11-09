@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>STATE</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contract : ${customerContractList}">
+        <td th:text="${contract.insuranceId}"></td>
+        <td th:text="${contract.underwritingState}"></td>
+
+    </tr>
+
+    <form action="/insurance/join" method="GET">
+        <button type="submit">문의 전화</button>
+    </form>
+    </tbody>
+
+</table>
+</body>
+</html>
