@@ -2,12 +2,10 @@ package com.example.talk.service;
 
 import com.example.talk.model.Account;
 import com.example.talk.model.Customer;
-import com.example.talk.model.dto.SignUpForm;
-import com.example.talk.repository.CustomerRepository;
+import com.example.talk.repository.AccountUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
-    private CustomerRepository customerRepository;
+    private AccountUserRepository customerRepository;
 
     @Override
     public boolean add(Customer customer) {
@@ -32,7 +30,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Account retrieve(String id) {
         return customerRepository.findByEmail(id).orElse(null);
-        // id에 해당하는 사용자를 찾아 반환하거나, 찾을 수 없는 경우 null을 반환합니다.
+//        // id에 해당하는 사용자를 찾아 반환하거나, 찾을 수 없는 경우 null을 반환합니다.
+        // return null;
     }
 
     @Override
@@ -57,13 +56,13 @@ public class CustomerServiceImpl implements CustomerService {
 //        customer.setType("CONTRACTOR");
 //        customerRepository.save(customer);
 //    }
-
-    public Account create(SignUpForm signUpForm) {
-        System.out.println(signUpForm.getName() + " " + signUpForm.getEmail() + " " + signUpForm.getPassword());
-        Account account = signUpForm.toEntity();
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
-        customerRepository.save(account);
-        return account;
-    }
+//
+//    public Account create(SignUpForm signUpForm) {
+//        System.out.println(signUpForm.getName() + " " + signUpForm.getEmail() + " " + signUpForm.getPassword());
+//        Account account = signUpForm.toEntity();
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        account.setPassword(passwordEncoder.encode(account.getPassword()));
+//        customerRepository.save(account);
+//        return account;
+//    }
 }

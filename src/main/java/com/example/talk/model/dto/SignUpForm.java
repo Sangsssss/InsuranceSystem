@@ -7,10 +7,10 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class SignUpForm {
-    private Long id;
     private String name;
     private String email;
     private String password;
+    private String role;
 
 //    private String rrn;
 //    private int age;
@@ -21,7 +21,7 @@ public class SignUpForm {
 //    private String occupation;
 
     public Account toEntity() {
-        return new Account(name, email, password);
+        return new Account(name, email, password, role);
     }
 
 

@@ -21,7 +21,7 @@ public class ContractController {
     public String applyContract(@RequestParam("insuranceId") String insuranceId, Principal principal) {
         String customerId = principal.getName();
         contractServiceImpl.add(Integer.parseInt(insuranceId), customerId);
-        return "main";
+        return "home";
     }
 
     @GetMapping("/contractState")

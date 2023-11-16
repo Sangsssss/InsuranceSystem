@@ -1,37 +1,28 @@
 package com.example.talk.service;
 
 import com.example.talk.model.Account;
-import com.example.talk.repository.CustomerRepository;
+import com.example.talk.model.dto.SignUpForm;
+import com.example.talk.repository.AccountUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Optional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class LoginService implements UserDetailsService {
-    private final CustomerRepository customerRepository;
-    private final PasswordEncoder passwordEncoder;
+public class LoginService {
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AccountUserRepository accountUserRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Account> account = customerRepository.findByEmail(email);
-        if (!account.isPresent()) {
-            log.info("User not found");
-            throw new UsernameNotFoundException("User not found");
-        }
-        System.out.println("success");
-        return new User(account.get().getEmail(), account.get().getPassword(), new ArrayList<>());
+
+    public Long save(SignUpForm dto) {
+        return accountUserRepository.save(Account.builder()
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .build()).getId();
     }
-
-    ;
 }
+
 

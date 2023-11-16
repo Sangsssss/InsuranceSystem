@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ConsentForm {
     private String name;
-//    private String rrn;
-//    private String phoneNum;
+    private String rrn;
+    private String phoneNum;
 }
