@@ -6,40 +6,21 @@
     <title>Talk</title>
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 0; padding-right: 0;">
-    <div class="row no-gutters">
-        <div class="col-md-12 bg-primary" style="height: 5vh;"><label>asd</label></div>
-    </div>
-    <div class="row no-gutters" style="height: 95vh;">
-        <div class="col-md-3 bg-secondary"><label>2</label></div>
-        <div class="col-md-9" style="height: 95vh;">
-            <div class="bg-danger" style="height: 90vh;">
-                <!-- Chatting Area -->
-                <form action="/insurances" method="GET">
-                    <button type="submit">보험 정보 보기</button>
-                </form>
-            </div>
-            <div class="bg-danger" style="height: 90vh;">
-                <!-- Chatting Area -->
-                <form action="/contractState" method="GET">
-                    <button type="submit">보험계약 상태 보기</button>
-                </form>
-            </div>
-            <div style="height: 5vh;">
-                <!-- Input Area -->
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <button class="btn btn-inline-secondary" id="button-addon1" type="button">+</button>
-                    </div>
-                    <input aria-describedby="button-addon2" aria-label="Recipient's username" class="form-control"
-                           placeholder="Recipient's username" type="text">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" id="button-addon2" type="button">Button</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<h1> Main Page </h1>
+<div>
+    <form action="/insurances" method="GET">
+        <button type="submit">보험 정보 보기</button>
+    </form>
+    <form action="/contractState" method="GET">
+        <button type="submit">보험계약 상태 보기</button>
+    </form>
+    <form action="/admin" method="GET">
+        <button type="submit">ADMIN</button>
+    </form>
+    <form action="/logout" method="POST">
+        <button type="submit">로그아웃</button>
+    </form>
 </div>
+
 </body>
 </html>

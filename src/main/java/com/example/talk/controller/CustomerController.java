@@ -38,18 +38,6 @@ public class CustomerController {
             return "consent";
         }
     }
-//
-//    @GetMapping("/signUp")
-//    public String signUp() {
-//        System.out.println("signUp");
-//        return "signUp";
-//    }
-
-//    @PostMapping("/createCustomer")
-//    public String create(@ModelAttribute SignUpForm signUpForm) {
-//        customerServiceImpl.create(signUpForm);
-//        return "redirect:/";
-//    }
 
 
 }

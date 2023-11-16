@@ -34,8 +34,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests()
-                .requestMatchers("/login", "/signUp", "/user").permitAll()
-                .requestMatchers("/insurances").hasRole("admin") //admin만 접근가능
+                .requestMatchers("/login", "/signUp", "/newSignUp").permitAll()
+                .requestMatchers("/admin").hasRole("ADMIN") //admin만 접근가능
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -74,11 +74,5 @@ public class SecurityConfig {
         System.out.println("asd");
         return new BCryptPasswordEncoder();
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
-
 
 }

@@ -25,29 +25,24 @@ public class InsuranceController {
 
     @GetMapping("/insurance/join")
     public String showJoinInsuranceForm() {
-        //insuranceServiceImpl.retrieveAll();
-        return "joinInsurance";
+        return "agreement";
     }
 
     @GetMapping("/insurance/join/consent")
     public String showConsentForm() {
-        //insuranceServiceImpl.retrieveAll();
         return "consent";
     }
 
-    @PostMapping("/submit")
-    public String submitName() {
-        //insuranceServiceImpl.retrieveAll();
-        return "consent";
-    }
+//    @PostMapping("/submit")
+//    public String submitName() {
+//        return "consent";
+//    }
 
     @PostMapping("/applyInsurance")
     public String retrieveSelectedInsurance(@RequestParam("insuranceId") String insuranceId, RedirectAttributes redirectAttributes) {
-//        System.out.println(insuranceId);
         insuranceServiceImpl.retrieve(Long.parseLong(insuranceId));
         redirectAttributes.addAttribute("insuranceId", insuranceId);
 
-        // 리다이렉트
         return "redirect:/applyContract";
     }
 }

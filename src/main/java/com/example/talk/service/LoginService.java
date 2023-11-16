@@ -21,6 +21,7 @@ public class LoginService {
                 .name(dto.getName())
                 .email(dto.getEmail())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .role(dto.getRole())
                 .build()).getId();
     }
 }
